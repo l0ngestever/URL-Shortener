@@ -26,7 +26,7 @@ class LinksController extends BaseController {
         {
             $url = Input::get('url');
 
-            if(substr($url,0,4) != 'http' || substr($url,0,5) != 'https') {
+            if(substr($url,0,3) == 'www') {
               $url = 'http://' . $url;
             }
 
