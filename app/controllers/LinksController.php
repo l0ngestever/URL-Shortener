@@ -24,7 +24,13 @@ class LinksController extends BaseController {
     {
         try
         {
-            $hash = Little::make(Input::get('url'));
+            $url = Input::get('url');
+
+            if(substr($url,0,4) != 'http' || substr($url,0,5) != 'https') {
+              $url = 'http://' . $url;
+            }
+
+            $hash = Little::make($url);
         }
 
         catch (ValidationException $e)
@@ -50,6 +56,11 @@ class LinksController extends BaseController {
         try
         {
             $url = Little::getUrlByHash($hash);
+
+            $count = DB::table('links')->where('hash', $hash)->pluck('count');
+            $count++;
+
+            DB::statement("UPDATE links SET count = '.$count.' WHERE hash = '".$hash."'");
 
             return Redirect::to($url);
         }
