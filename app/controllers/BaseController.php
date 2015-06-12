@@ -15,4 +15,12 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function information() {
+		return View::make('base.info');
+	}
+
+	public function contact() {
+		return View::make('base.contact');
+	}
+
 }

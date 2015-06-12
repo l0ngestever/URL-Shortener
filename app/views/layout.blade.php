@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
     @if (Session::has('flash_message'))
         <div class="alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -16,7 +17,32 @@
     @endif
 
     <div class="container">
-        @yield('content')
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MRTZ - Little Shortener</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li {{ Request::is('/') ? 'class="active"' : '' }}><a href="/">Home</a></li>
+              <li {{ Request::is('info') ? 'class="active"' : '' }}><a href="/info">Info</a></li>
+              <li {{ Request::is('contact') ? 'class="active"' : '' }}><a href="/contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+      @yield('content')
+
+      <!-- AD STORE PLACE -->
+      
+      <!-- END AD STORE PLACE -->
     </div>
 
     <!-- Please don't use massive JS files for minor functionality. This is okay for the demo, though. -->

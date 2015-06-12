@@ -14,6 +14,10 @@ output { text-align: center; }
     top: 0; left: 0; bottom: 0; right: 0;
 }
 
+.center-it {
+    text-align: center;
+}
+
 #shorten-input {
     width: 80%;
     height: 70px;
@@ -26,5 +30,9 @@ output { text-align: center; }
     color: red;
     font-style: italic;
     text-align: center;
+    margin-top: 1em;
+}
+
+.container {
     margin-top: 1em;
 }
